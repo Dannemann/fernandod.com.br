@@ -1,3 +1,3 @@
 https://fernandod.com.br
 
-![](infra/website-screenshot.png)
+![](images/website-screenshot.png)
