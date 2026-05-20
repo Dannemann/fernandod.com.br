@@ -52,6 +52,7 @@ Set the `Deployment path` to `/public_html` on the `Mappings` tab. `Web path` sh
 &emsp;&emsp; &emsp;&emsp; `infra`  
 &emsp;&emsp; &emsp;&emsp; `.gitignore`  
 &emsp;&emsp; &emsp;&emsp; `AGENTS.md`  
+&emsp;&emsp; &emsp;&emsp; `README.md`  
 &emsp;&emsp; &emsp;&emsp; `images` (for development)  
 &emsp;&emsp; &emsp;&emsp; `modules` (for development)  
 &emsp;&emsp; Remote  
