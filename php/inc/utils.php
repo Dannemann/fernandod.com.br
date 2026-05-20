@@ -119,7 +119,7 @@ function fkd_recaptcha_script_url() {
 }
 
 function fkd_recaptcha_widget($action = '') {
-	$html = '<div class="g-recaptcha" data-sitekey="'.htmlspecialchars(fkd_recaptcha_site_key(), ENT_QUOTES, 'ISO-8859-1').'"';
+	$html = '<div class="g-recaptcha" data-theme="light" data-sitekey="'.htmlspecialchars(fkd_recaptcha_site_key(), ENT_QUOTES, 'ISO-8859-1').'"';
 
 	if ($action !== '') {
 		$html .= ' data-action="'.htmlspecialchars($action, ENT_QUOTES, 'ISO-8859-1').'"';

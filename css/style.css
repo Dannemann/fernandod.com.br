@@ -199,7 +199,8 @@ h2,h3,h4,h5,h6,form{margin:0;padding:0;}
 
 .edge-ios-invert-light #main img,
 .edge-ios-invert-light #main object,
-.edge-ios-invert-light #main embed{
+.edge-ios-invert-light #main embed,
+.edge-ios-invert-light #main .g-recaptcha{
   filter:invert(1);}
 
 .edge-ios-invert-light #welcome_wrap h3,
