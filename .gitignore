@@ -1,9 +1,15 @@
 .DS_Store
+Desktop.ini
+Thumbs.db
+
 .idea/
-error_log
+
+Old resources.zip
+efecade.sql.zip
+
 *.log
+error_log
+
 php/inc/mail_config.local.php
 php/inc/recaptcha_config.local.php
 php/inc/connector_data.local.php
-Old resources.zip
-efecade.sql.zip
