@@ -1,0 +1,58 @@
+# HostGator (on the backend, cPanel):
+
+Tip: Most plans give one free domain. Redeem it from the HostGator backend after buying the plan. 
+
+Create the database.  
+Create the database user.  
+Link the database with the user, granting its permissions.  
+The database name, user, and password will be used for the PHP connection.  
+Import `efecade.sql`.  
+
+Create the email account `notificacao@fernandod.com.br`.  
+In Titan webmail inbox, enable external app access: "gear icon → `Ative o Titan nos outros aplicativos` → finish activation".  
+This email address and its password will be used on PHP.
+
+Create an FTP account.  
+
+Production:  
+https://fernandod.com.br
+
+# Project configuration:
+
+### Copy the essential configuration files:
+
+`mail_config.example.php` or `mail_config.mailpit.example.php`  
+
+`connector_data.example.php` or `connector_data.local.example.php`
+
+`recaptcha_config.example.php`  
+FKD_RECAPTCHA_ENTERPRISE_API_KEY can be created at "Google Cloud Console → `APIs & Services` → `Credentials`".  
+reCAPTCHA key creation can be found at "Google Cloud Console → `Security` → `Fraud Defense`".
+
+# Local:
+
+Project infra:  
+`docker compose -f infra/docker-compose.yml up -d`
+
+Run the project:  
+`php -S 127.0.0.1:8000`
+
+Local:  
+http://127.0.0.1:8000
+
+Mailpit:  
+http://localhost:8025
+
+### Configure PHPStorm FTP Deployment (at the time I wrote this, only FTP was available; don't try FTPS).
+"`Tools` → `Deployment` → `Browse Remote Host`"  
+`Root path` should be `/` on `Connection`.    
+Set the `Deployment path` to `/public_html` on the `Mappings` tab. `Web path` should be `/`.  
+`Excluded Paths`:  
+&emsp;&emsp; Local  
+&emsp;&emsp; &emsp;&emsp; `infra`  
+&emsp;&emsp; &emsp;&emsp; `.gitignore`  
+&emsp;&emsp; &emsp;&emsp; `AGENTS.md`  
+&emsp;&emsp; &emsp;&emsp; `images` (for development)  
+&emsp;&emsp; &emsp;&emsp; `modules` (for development)  
+&emsp;&emsp; Remote  
+&emsp;&emsp; &emsp;&emsp; `.htaccess`  

@@ -1,0 +1,14 @@
+<Files .htaccess>
+order deny,allow
+deny from all
+</Files>
+
+<Files admin.php>
+order deny,allow
+deny from all
+</Files>
+
+<Files adminprocess.php>
+order deny,allow
+deny from all
+</Files>

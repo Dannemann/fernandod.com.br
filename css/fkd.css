@@ -1,0 +1,77 @@
+/**
+ fkd.js
+ Author: Jean Dannemann Carone
+ Creation date: 02/25/2010
+*/
+
+.pointerCursor {
+	cursor:pointer;
+}
+
+.noScript {
+	color:#F00;
+	font-size:13px;
+}
+
+.areaEmConstrucao {
+	font-size:13px;
+}
+
+.areaEmConstrucao2 {
+	font-weight:bold;
+	font-size:12px;
+}
+
+.resultadoDeBuscaVazio {
+	font-weight:bold;
+	font-size:16px;
+}
+
+.normal1 {
+	font-size: 11px;
+}
+
+.normal1Red {
+	color: #C00;
+	font-size: 11px;
+}
+
+.titulo1 {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.titulo1Red {
+	color: #C00;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.titulo2 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.titulo2Red {
+	color: #C00;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.tituloGreen {
+	color: #2c823a;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.highlight_worda {
+	background-color: #FF0;
+}
+
+.apenasTamanho12 {
+	font-size:12px;
+}
+
+.contact-form-label {
+	white-space: nowrap;
+}

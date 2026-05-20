@@ -1,0 +1,24 @@
+<Files .htaccess>
+order deny,allow
+deny from all
+</Files>
+
+<Files forgotpass.php>
+order deny,allow
+deny from all
+</Files>
+
+<Files register.php>
+order deny,allow
+deny from all
+</Files>
+
+<Files useredit.php>
+order deny,allow
+deny from all
+</Files>
+
+<Files userinfo.php>
+order deny,allow
+deny from all
+</Files>
