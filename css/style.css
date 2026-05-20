@@ -166,6 +166,10 @@ h2,h3,h4,h5,h6,form{margin:0;padding:0;}
   color:#eae0d4;
   filter:invert(1);}
 
+/* Text pages nest #main, so keep the Edge workaround to one inversion pass. */
+.edge-ios-invert-light #main #main{
+  filter:none;}
+
 .edge-ios-invert-light #main,
 .edge-ios-invert-light #main *{
   color:#eae0d4 !important;

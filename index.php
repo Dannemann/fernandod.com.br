@@ -278,7 +278,7 @@
 		})();
 	</script>
 	<link rel="stylesheet" href="css/pagenavi-css.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="css/style.css?v=20260520-edge-search-input" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/style.css?v=20260520-edge-text-content" type="text/css" media="screen" />
 	<link rel="stylesheet" href="css/fkd.css?v=20260520-contact-label-nowrap" type="text/css" media="screen" />
 
 	<script src="js/utils.js" type="text/javascript" defer="defer"></script>
