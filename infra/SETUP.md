@@ -6,7 +6,7 @@ Create the database.
 Create the database user.  
 Link the database with the user, granting its permissions.  
 The database name, user, and password will be used for the PHP connection.  
-Import `efecade.sql`.  
+Import `fernandod.sql`.  
 
 Create the email account `notificacao@fernandod.com.br`.  
 In Titan webmail inbox, enable external app access: "gear icon → `Ative o Titan nos outros aplicativos` → finish activation".  
