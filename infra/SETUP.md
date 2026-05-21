@@ -13,6 +13,7 @@ In Titan webmail inbox, enable external app access: "gear icon → `Ative o Tita
 This email address and its password will be used on PHP.
 
 Create an FTP account.  
+While creating the user, make sure its directory is something like "/home2/jeanda14/" and not "/home2/jeanda14/fernandod.com/deployment" (delete the contents of the "Diretório" field).
 
 Production:  
 https://fernandod.com.br
