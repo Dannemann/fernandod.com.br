@@ -33,6 +33,8 @@
             <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/src/OAuth.php" />
             <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/src/OAuthTokenProvider.php" />
             <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/src/POP3.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/images" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules" />
           </excludedPaths>
         </serverdata>
       </paths>
