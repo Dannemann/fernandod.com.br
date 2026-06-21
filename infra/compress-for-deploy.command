@@ -41,6 +41,19 @@ filter=(
   php/inc/recaptcha_config.example.php
   php/inc/mail_config.example.php
   .well-known
+  modules/login/dbtables.sql
+  modules/PHPMailer-master/COMMITMENT
+  modules/PHPMailer-master/README.md
+  modules/PHPMailer-master/SECURITY.md
+  modules/PHPMailer-master/SMTPUTF8.md
+  modules/PHPMailer-master/VERSION
+  modules/PHPMailer-master/composer.json
+  modules/PHPMailer-master/get_oauth_token.php
+  modules/PHPMailer-master/language
+  modules/PHPMailer-master/src/DSNConfigurator.php
+  modules/PHPMailer-master/src/OAuth.php
+  modules/PHPMailer-master/src/OAuthTokenProvider.php
+  modules/PHPMailer-master/src/POP3.php
 )
 
 zip_excludes=(
