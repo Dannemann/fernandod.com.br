@@ -1,8 +1,21 @@
+## OS metadata
 .DS_Store
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100/
+.Trashes/
+.fseventsd/
 Desktop.ini
 Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+.directory
 
-.idea/
+# Keep JetBrains project configuration available for commit.
+!.idea/
+!.idea/**
 
 Old resources.zip
 fernandod.sql.zip

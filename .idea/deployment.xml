@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="fernandod-hostgator FTP" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+    <option name="confirmBeforeUploading" value="false" />
+    <serverData>
+      <paths name="fernandod-hostgator FTP">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/infra" />
+            <excludedPath local="true" path="$PROJECT_DIR$/.gitignore" />
+            <excludedPath local="true" path="$PROJECT_DIR$/AGENTS.md" />
+            <excludedPath local="true" path="$PROJECT_DIR$/images" />
+            <excludedPath path="/public_html/.htaccess" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules" />
+            <excludedPath local="true" path="$PROJECT_DIR$/README.md" />
+            <excludedPath local="true" path="$PROJECT_DIR$/php/inc/connector_data.example.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/php/inc/connector_data.local.example.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/php/inc/mail_config.mailpit.example.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/php/inc/recaptcha_config.example.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/php/inc/mail_config.example.php" />
+            <excludedPath path="/.well-known" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
