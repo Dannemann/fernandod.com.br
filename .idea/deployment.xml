@@ -12,9 +12,7 @@
             <excludedPath local="true" path="$PROJECT_DIR$/infra" />
             <excludedPath local="true" path="$PROJECT_DIR$/.gitignore" />
             <excludedPath local="true" path="$PROJECT_DIR$/AGENTS.md" />
-            <excludedPath local="true" path="$PROJECT_DIR$/images" />
             <excludedPath path="/public_html/.htaccess" />
-            <excludedPath local="true" path="$PROJECT_DIR$/modules" />
             <excludedPath local="true" path="$PROJECT_DIR$/README.md" />
             <excludedPath local="true" path="$PROJECT_DIR$/php/inc/connector_data.example.php" />
             <excludedPath local="true" path="$PROJECT_DIR$/php/inc/connector_data.local.example.php" />
@@ -22,6 +20,19 @@
             <excludedPath local="true" path="$PROJECT_DIR$/php/inc/recaptcha_config.example.php" />
             <excludedPath local="true" path="$PROJECT_DIR$/php/inc/mail_config.example.php" />
             <excludedPath path="/.well-known" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/login/dbtables.sql" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/COMMITMENT" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/README.md" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/SECURITY.md" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/SMTPUTF8.md" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/VERSION" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/composer.json" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/get_oauth_token.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/language" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/src/DSNConfigurator.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/src/OAuth.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/src/OAuthTokenProvider.php" />
+            <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/src/POP3.php" />
           </excludedPaths>
         </serverdata>
       </paths>
