@@ -16,6 +16,7 @@ ehthumbs_vista.db
 # Keep JetBrains project configuration available for commit.
 !.idea/
 !.idea/**
+.idea/workspace.xml
 
 Old resources.zip
 fernandod.sql.zip
