@@ -29,6 +29,29 @@ items=(
   sitemap.xml
 )
 
+filter=(
+  infra
+  .gitignore
+  AGENTS.md
+  .htaccess
+  README.md
+  php/inc/connector_data.example.php
+  php/inc/connector_data.local.example.php
+  php/inc/mail_config.mailpit.example.php
+  php/inc/recaptcha_config.example.php
+  php/inc/mail_config.example.php
+  .well-known
+)
+
+zip_excludes=(
+  '*.DS_Store'
+  '*/.DS_Store'
+)
+
+for filtered_item in "${filter[@]}"; do
+  zip_excludes+=("$filtered_item" "$filtered_item/" "$filtered_item/*")
+done
+
 timestamp="$(date +%Y%m%d-%H%M%S)"
 zip_name="${ZIP_NAME:-fernandod-compressed-deploy-$timestamp.zip}"
 zip_path="${ZIP_PATH:-$script_dir/$zip_name}"
@@ -60,7 +83,7 @@ echo "Creating zip:"
 echo "$zip_path"
 echo
 
-/usr/bin/zip -rq "$zip_path" "${items[@]}" -x '*.DS_Store' '*/.DS_Store'
+/usr/bin/zip -rq "$zip_path" "${items[@]}" -x "${zip_excludes[@]}"
 
 echo
 echo "Zip created successfully."
