@@ -11,7 +11,7 @@ class FkdMailer {
 		$headers = self::normalizeHeaders($headers);
 		if (!isset($headers['from'])) {
 			$headers['from'] = self::formatAddress(
-				self::setting('FKD_MAIL_FROM_ADDRESS', 'contato@fernandod.com.br'),
+				self::setting('FKD_MAIL_FROM_ADDRESS', 'notificacao@fernandod.com.br'),
 				self::setting('FKD_MAIL_FROM_NAME', 'fernandod.com.br')
 			);
 		}
@@ -280,7 +280,7 @@ class FkdMailer {
 	}
 
 	private static function fromName($fromHeader, $fromAddress) {
-		$configuredAddress = self::setting('FKD_MAIL_FROM_ADDRESS', 'contato@fernandod.com.br');
+		$configuredAddress = self::setting('FKD_MAIL_FROM_ADDRESS', 'notificacao@fernandod.com.br');
 		if (strcasecmp($fromAddress, $configuredAddress) === 0) {
 			return self::setting('FKD_MAIL_FROM_NAME', 'fernandod.com.br');
 		}
