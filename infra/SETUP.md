@@ -1,4 +1,4 @@
-# HostGator (on the backend, cPanel):
+# HostGator (on cPanel):
 
 Tip: Most plans give one free domain. Redeem it from the HostGator backend after buying the plan. 
 
@@ -27,8 +27,8 @@ https://fernandod.com.br
 `connector_data.example.php` or `connector_data.local.example.php`
 
 `recaptcha_config.example.php`  
-FKD_RECAPTCHA_ENTERPRISE_API_KEY can be created at "Google Cloud Console → `APIs & Services` → `Credentials`".  
-reCAPTCHA key creation can be found at "Google Cloud Console → `Security` → `Fraud Defense`".
+`FKD_RECAPTCHA_ENTERPRISE_API_KEY` can be created at `Google Cloud Console` → `APIs & Services` → `Credentials`.  
+reCAPTCHA key creation can be found at `Google Cloud Console` → `Security` → `Fraud Defense`.
 
 # Local:
 
@@ -45,16 +45,7 @@ Mailpit:
 http://localhost:8025
 
 ### Configure PHPStorm FTP Deployment (at the time I wrote this, only FTP was available; don't try FTPS).
-"`Tools` → `Deployment` → `Browse Remote Host`"  
-`Root path` should be `/` on `Connection`.    
-Set the `Deployment path` to `/public_html` on the `Mappings` tab. `Web path` should be `/`.  
-`Excluded Paths`:  
-&emsp;&emsp; Local  
-&emsp;&emsp; &emsp;&emsp; `infra`  
-&emsp;&emsp; &emsp;&emsp; `.gitignore`  
-&emsp;&emsp; &emsp;&emsp; `AGENTS.md`  
-&emsp;&emsp; &emsp;&emsp; `README.md`  
-&emsp;&emsp; &emsp;&emsp; `images` (for development)  
-&emsp;&emsp; &emsp;&emsp; `modules` (for development)  
-&emsp;&emsp; Remote  
-&emsp;&emsp; &emsp;&emsp; `.htaccess`  
+`Tools` → `Deployment` → `Browse Remote Host`.  
+`Root path` should be the deployment directory.  
+On the `Mappings` tab, `Deployment path` and `Web path` should be `/`.  
+Adjust `Excluded Paths` according to the exclusions in `compress-for-deploy.command`.  
