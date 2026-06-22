@@ -36,6 +36,7 @@
             <excludedPath local="true" path="$PROJECT_DIR$/images" />
             <excludedPath local="true" path="$PROJECT_DIR$/modules" />
             <excludedPath local="true" path="$PROJECT_DIR$/error_log" />
+            <excludedPath local="true" path="$PROJECT_DIR$/tests" />
           </excludedPaths>
         </serverdata>
       </paths>
