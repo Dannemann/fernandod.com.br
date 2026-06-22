@@ -75,7 +75,23 @@ final class SQLBook {
 	}
 
 	static function inserirComentario($nome, $email, $isPublicarEmail, $url, $comment, $fktexto) {
-		return mysql_query("INSERT INTO comentarios (nome, email, isPublicarEmail, url, data, comment, fk_texto) VALUES ('".mysql_real_escape_string(utf8_encode($nome))."', '".mysql_real_escape_string($email)."', '".mysql_real_escape_string(($isPublicarEmail == "on" ? 1 : 0))."', '".mysql_real_escape_string($url)."', NOW(), '".mysql_real_escape_string(utf8_encode($comment))."', '".mysql_real_escape_string($fktexto)."')");
+		return mysql_query("INSERT INTO comentarios (nome, email, isPublicarEmail, url, data, comment, fk_texto) VALUES ('".mysql_real_escape_string(self::encodeIso88591AsUtf8($nome))."', '".mysql_real_escape_string($email)."', '".mysql_real_escape_string(($isPublicarEmail == "on" ? 1 : 0))."', '".mysql_real_escape_string(self::encodeIso88591AsUtf8($url))."', NOW(), '".mysql_real_escape_string(self::encodeIso88591AsUtf8($comment))."', '".mysql_real_escape_string($fktexto)."')");
+	}
+
+	private static function encodeIso88591AsUtf8($value) {
+		if (function_exists('mb_convert_encoding')) {
+			return mb_convert_encoding($value, 'UTF-8', 'ISO-8859-1');
+		}
+
+		if (function_exists('iconv')) {
+			return iconv('ISO-8859-1', 'UTF-8', $value);
+		}
+
+		if (function_exists('utf8_encode')) {
+			return utf8_encode($value);
+		}
+
+		return $value;
 	}
 
 	static function insertContactMsg($values) {
