@@ -232,6 +232,10 @@
 		$pageDescription = 'Entre em contato com o site de Fernando Kitzinger Dannemann para sugestoes, criticas e contribuicoes.';
 		$pageCanonicalUrl = fkd_public_url('/index.php?contato');
 	}
+
+	$pageShareUrl = $pageCanonicalUrl !== '' ? $pageCanonicalUrl : fkd_public_url('/');
+	$pageShareImageUrl = fkd_public_url('/social-preview.png');
+	$pageShareImageAlt = 'Fernando Kitzinger Dannemann e a pagina inicial do site fernandod.com.br';
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -247,6 +251,23 @@
 	<meta name="keywords" content="curiosidades,artigos,textos,contos,humor,historia" />
 	<meta name="rating" content="general" />
 	<meta name="robots" content="index,follow" />
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="fernandod.com.br" />
+	<meta property="og:title" content="<?=fkd_html_escape($pageTitle)?>" />
+	<meta property="og:description" content="<?=fkd_html_escape($pageDescription)?>" />
+	<meta property="og:url" content="<?=fkd_html_escape($pageShareUrl)?>" />
+	<meta property="og:image" content="<?=fkd_html_escape($pageShareImageUrl)?>" />
+	<meta property="og:image:secure_url" content="<?=fkd_html_escape($pageShareImageUrl)?>" />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="<?=fkd_html_escape($pageShareImageAlt)?>" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="<?=fkd_html_escape($pageTitle)?>" />
+	<meta name="twitter:description" content="<?=fkd_html_escape($pageDescription)?>" />
+	<meta name="twitter:image" content="<?=fkd_html_escape($pageShareImageUrl)?>" />
+	<meta name="twitter:image:alt" content="<?=fkd_html_escape($pageShareImageAlt)?>" />
 <?php if ($pageCanonicalUrl !== '') { ?>
 	<link rel="canonical" href="<?=fkd_html_escape($pageCanonicalUrl)?>" />
 <?php } ?>

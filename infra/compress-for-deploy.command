@@ -25,6 +25,7 @@ items=(
   prcsFm.php
   press.php
   robots.txt
+  social-preview.png
   sitemap.php
   sitemap.xml
 )
