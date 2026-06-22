@@ -74,6 +74,26 @@ final class UtilsEfecade {
 				"<div class='fixed'></div>".
 			"</div>";
 	}
+
+	private static function htmlEscape($value) {
+		return htmlspecialchars((string) $value, ENT_QUOTES, 'ISO-8859-1');
+	}
+
+	private static function decodeUtf8AsIso88591($value) {
+		if (function_exists('mb_convert_encoding')) {
+			return mb_convert_encoding($value, 'ISO-8859-1', 'UTF-8');
+		}
+
+		if (function_exists('iconv')) {
+			return iconv('UTF-8', 'ISO-8859-1', $value);
+		}
+
+		if (function_exists('utf8_decode')) {
+			return utf8_decode($value);
+		}
+
+		return $value;
+	}
 	
 	static function renderCommentsForm($textoID, $commentsResource, $textInfo, $nome, $email, $site, $comment, $resp) {
 	    if ($resp == "true") {
@@ -82,6 +102,13 @@ final class UtilsEfecade {
 	        $site = '';
 	        $comment = '';
 	    }
+
+	    $textoID = self::htmlEscape($textoID);
+	    $textInfo = self::htmlEscape($textInfo);
+	    $nome = self::htmlEscape($nome);
+	    $email = self::htmlEscape($email);
+	    $site = self::htmlEscape($site);
+	    $comment = self::htmlEscape($comment);
 	    
 	    $html =
 	    "<div class='navigation'>".
@@ -92,9 +119,9 @@ final class UtilsEfecade {
 	    "<h3>Deixe um coment&aacute;rio:</h3>".
 	    "<form method='post' id='commentform' name='commentform' onsubmit='return checkCommentsData();'>".
 	    "<p><input name='nome' id='nome' maxlength='50' size='22' tabindex='1' aria-required='true' type='text' value='$nome' />".
-	    "&nbsp;&nbsp;<label for='author'><small><b>* Nome</b></small></label></p>".
+	    "&nbsp;&nbsp;<label for='nome'><small><b>* Nome</b></small></label></p>".
 	    "<p><input name='email' id='email' maxlength='50' size='22' tabindex='2' aria-required='true' type='text' value='$email' />".
-	    "&nbsp;&nbsp;<label for='email'><small><b>* <i>E-mail</i> para contato</b></small></label>&nbsp;&nbsp;<input type='checkbox' name='isPublicarEmail' id='isPublicarEmail' tabindex='3' />&nbsp;&nbsp;<label for='email'><small>Publicar <i>e-mail</i>?</small></label></p>".
+	    "&nbsp;&nbsp;<label for='email'><small><b>* <i>E-mail</i> para contato</b></small></label>&nbsp;&nbsp;<input type='checkbox' name='isPublicarEmail' id='isPublicarEmail' tabindex='3' />&nbsp;&nbsp;<label for='isPublicarEmail'><small>Publicar <i>e-mail</i>?</small></label></p>".
 	    "<p><input name='theurl' id='theurl' maxlength='1024' size='22' tabindex='4' type='text' value='$site' />".
 	    "&nbsp;&nbsp;<label for='theurl'><small>Sua cidade</small></label></p>".
 	    "<p><textarea name='comment' id='comment' cols='100%' rows='10' tabindex='5' onKeyDown='textCounter(document.commentform.comment,document.commentform.remLen1,1000)' onKeyUp='textCounter(document.commentform.comment,document.commentform.remLen1,1000)'>$comment</textarea></p>".
@@ -116,15 +143,19 @@ final class UtilsEfecade {
 	    $i = 0;
 	    $ol = "<ol class='commentlist' >";
 	    while ($rowComment = mysql_fetch_row($commentsResource)) {
+	        $commentAuthor = self::htmlEscape(self::decodeUtf8AsIso88591($rowComment[1]));
+	        $commentEmail = self::htmlEscape($rowComment[2]);
+	        $commentDate = self::htmlEscape(html_entity_decode($rowComment[5], ENT_QUOTES | ENT_HTML401, 'ISO-8859-1'));
+	        $commentText = self::htmlEscape(self::decodeUtf8AsIso88591($rowComment[6]));
 	        $ol .=
 	        "<li class='comment even thread-even depth-1' id='comment-9'>".
 	        "<div id='div-comment-9' style='font-size:12px;'>".
 	        "<div class='comment-author vcard'>".
 	        "<img alt='' src='http://www.gravatar.com/avatar/65f7578a6db316c59f35c0574caf6929?s=32&amp;d=http%3A%2F%2Fwww.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D32&amp;r=G' class='avatar avatar-32 photo' height='32' width='32' />".
-	        "&nbsp;&nbsp;<cite class='fn'>".utf8_decode($rowComment[1])."</cite>&nbsp;".($rowComment[3] == 1 ? ' ('.$rowComment[2].') ' : '')."<span class='says'>diz:</span>".
+	        "&nbsp;&nbsp;<cite class='fn'>".$commentAuthor."</cite>&nbsp;".($rowComment[3] == 1 ? ' ('.$commentEmail.') ' : '')."<span class='says'>diz:</span>".
 	        "</div>".
-	        "<div class='comment-meta commentmetadata'>".$rowComment[5]."</div>".
-	        "<p>".utf8_decode($rowComment[6])."</p>".
+	        "<div class='comment-meta commentmetadata'>".$commentDate."</div>".
+	        "<p>".$commentText."</p>".
 	        "<div class='reply'></div>".
 	        "</div>".
 	        "</li>";

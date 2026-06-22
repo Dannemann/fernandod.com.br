@@ -94,8 +94,8 @@ final class SQLBook {
 		return $value;
 	}
 
-	static function insertContactMsg($values) {
-	    return mysql_query("INSERT INTO `contact` (name, email, reason, www, msg) VALUES (".utf8_encode($values).")");
+	static function insertContactMsg($name, $email, $reason, $webSite, $message) {
+	    return mysql_query("INSERT INTO `contact` (name, email, reason, www, msg) VALUES ('".mysql_real_escape_string(self::encodeIso88591AsUtf8($name))."', '".mysql_real_escape_string($email)."', '".mysql_real_escape_string($reason)."', '".mysql_real_escape_string(self::encodeIso88591AsUtf8($webSite))."', '".mysql_real_escape_string(self::encodeIso88591AsUtf8($message))."')");
 	}
 
 	static function updateTexto($textID, $categoria, $titulo, $texto) {

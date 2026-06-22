@@ -166,6 +166,10 @@ function checkCommentsData() {
 		document.getElementById("comment").focus();
 		alert("Fa\u00e7a seu coment\u00e1rio sobre o texto.");
 		return false;
+	} else if (trim(document.getElementById("comment").value).length > 1000) {
+		document.getElementById("comment").focus();
+		alert("Coment\u00e1rio deve conter no m\u00e1ximo 1000 caracteres.");
+		return false;
 	} else if (recaptchaResponse() == "") {
 		alert("Confirme que voc\u00ea n\u00e3o \u00e9 um rob\u00f4.   =)");
 		return false;
@@ -208,9 +212,9 @@ function checkContactData() {
 		document.getElementById("contactMessage").focus();
 		alert("Escreva sua mensagem ao fernandod.com.br.");
 		return false;
-	} else if (trim(document.getElementById("contactMessage").value).length >= 999) {
+	} else if (trim(document.getElementById("contactMessage").value).length > 1000) {
 		document.getElementById("contactMessage").focus();
-		alert("Mensagem deve conter menos de 1000 caracteres.");
+		alert("Mensagem deve conter no m\u00e1ximo 1000 caracteres.");
 		return false;
 	} else if (recaptchaResponse() == "") {
 		document.getElementById("contactMessage").focus();

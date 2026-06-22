@@ -38,5 +38,16 @@ SQLBook::inserirComentario('Jo'.chr(0xe3).'o', 'joao@example.com', '', $isoCity,
 assertContains($utf8City, $lastQuery, 'Expected accented city to be UTF-8 encoded before insert.');
 assertNotContains($isoCity, $lastQuery, 'Expected accented city not to remain in ISO-8859-1 bytes before insert.');
 
-echo "SQLBook comment encoding test passed.\n";
+$lastQuery = '';
+$isoContactMessage = 'Mensagem com acentua'.chr(0xe7).chr(0xe3).'o';
+$utf8ContactMessage = 'Mensagem com acentua'.chr(0xc3).chr(0xa7).chr(0xc3).chr(0xa3).'o';
+
+SQLBook::insertContactMsg('Jo'.chr(0xe3).'o', 'joao@example.com', '1', $isoCity, $isoContactMessage);
+
+assertContains($utf8City, $lastQuery, 'Expected accented contact city to be UTF-8 encoded before insert.');
+assertContains($utf8ContactMessage, $lastQuery, 'Expected accented contact message to be UTF-8 encoded before insert.');
+assertNotContains($isoCity, $lastQuery, 'Expected accented contact city not to remain in ISO-8859-1 bytes before insert.');
+assertNotContains($isoContactMessage, $lastQuery, 'Expected accented contact message not to remain in ISO-8859-1 bytes before insert.');
+
+echo "SQLBook encoding test passed.\n";
 ?>

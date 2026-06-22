@@ -17,35 +17,37 @@
 
 	if (isset($m) && isset($m2) && $m2 == '34jD') {
 		if ($m == 'pscmt') {
-			$fktexto = $_POST['fktexto'];
+			$fktexto = isset($_POST['fktexto']) ? $_POST['fktexto'] : '';
+			$redirectTexto = rawurlencode($fktexto);
 
 			if (!fkd_recaptcha_verify($resp, $_SERVER['REMOTE_ADDR'], FKD_RECAPTCHA_ACTION_COMMENT)) {
-				header('Location:index.php?texto='.$fktexto.'&cmtpsd=false&captcha=false');
+				header('Location:index.php?texto='.$redirectTexto.'&cmtpsd=false&captcha=false');
 				die;
 			}
 
-			if (verificar_email($_POST['email']) == 0) {
-				header('Location:index.php?texto='.$fktexto.'&cmtpsd=false&email=false');
+			if (!isset($_POST['email']) or verificar_email($_POST['email']) == 0) {
+				header('Location:index.php?texto='.$redirectTexto.'&cmtpsd=false&email=false');
 				die;
 			}
-			if (!isset($_POST['nome']) or $_POST['nome'] == '' or $_POST['nome'] == NULL) {
-				header('Location:index.php?texto='.$fktexto.'&cmtpsd=false&nome=false');
+			if (!isset($_POST['nome']) or trim($_POST['nome']) == '') {
+				header('Location:index.php?texto='.$redirectTexto.'&cmtpsd=false&nome=false');
 				die;
 			}
-			if (!isset($_POST['comment']) or $_POST['comment'] == '' or $_POST['comment'] == NULL) {
-				header('Location:index.php?texto='.$fktexto.'&cmtpsd=false&comment=false');
+			if (!isset($_POST['comment']) or trim($_POST['comment']) == '') {
+				header('Location:index.php?texto='.$redirectTexto.'&cmtpsd=false&comment=false');
 				die;
 			}
 			if (strlen($_POST['comment']) > 1000) {
-				header('Location:index.php?texto='.$fktexto.'&cmtpsd=false&commentlarge=false');
+				header('Location:index.php?texto='.$redirectTexto.'&cmtpsd=false&commentlarge=false');
 				die;
 			}
 
-			$commentCityValue = isset($_POST['theurl']) ? $_POST['theurl'] : @$_POST['url'];
-			$retorno = SQLBook::inserirComentario(mysql_real_escape_string($_POST['nome']), mysql_real_escape_string($_POST['email']), mysql_real_escape_string(@$_POST['isPublicarEmail']), mysql_real_escape_string($commentCityValue), mysql_real_escape_string($_POST['comment']), mysql_real_escape_string($fktexto));
+			$commentCityValue = isset($_POST['theurl']) ? $_POST['theurl'] : '';
+			$isPublicarEmailValue = isset($_POST['isPublicarEmail']) ? $_POST['isPublicarEmail'] : '';
+			$retorno = SQLBook::inserirComentario($_POST['nome'], $_POST['email'], $isPublicarEmailValue, $commentCityValue, $_POST['comment'], $fktexto);
 
 			if ($retorno == 1) {
-				$commentTitle = FkdMailer::text($_POST['tii']);
+				$commentTitle = FkdMailer::text(isset($_POST['tii']) ? $_POST['tii'] : '');
 				$commentName = FkdMailer::text($_POST['nome']);
 				$commentEmail = FkdMailer::text($_POST['email']);
 				$commentCity = FkdMailer::text($commentCityValue);
@@ -56,7 +58,7 @@
 					error_log('[FkdMailer] Comment notification failed for texto '.$fktexto.': '.FkdMailer::lastError());
 				}
 
-				header('Location:index.php?texto='.$fktexto.'&cmtpsd=true');
+				header('Location:index.php?texto='.$redirectTexto.'&cmtpsd=true');
 				die;
 			}
 		}
@@ -77,6 +79,10 @@
 			echo "Informe o motivo do contato.<br>Clique 'Voltar' em seu navegador.";
 			die;
 		}
+		if (!in_array($_POST['contactMotivo'], array("1", "2", "3", "4", "5", "6"), true)) {
+			echo "O motivo de contato informado n&atilde;o &eacute; v&aacute;lido.<br>Clique 'Voltar' em seu navegador.";
+			die;
+		}
 		if (!isset($_POST['contactMessage']) or $_POST['contactMessage'] == '' or $_POST['contactMessage'] == NULL) {
 			echo "Informe a mensagem de contato.<br>Clique 'Voltar' em seu navegador.";
 			die;
@@ -91,7 +97,8 @@
 			die;
 		}
 
-		$retorno = SQLBook::insertContactMsg("'".mysql_real_escape_string($_POST['contactName'])."', '".mysql_real_escape_string($_POST['contactEmail'])."', '".mysql_real_escape_string($_POST['contactMotivo'])."', '".mysql_real_escape_string($_POST['contactWebSite'])."', '".mysql_real_escape_string($_POST['contactMessage'])."'");
+		$contactWebSiteValue = isset($_POST['contactWebSite']) ? $_POST['contactWebSite'] : '';
+		$retorno = SQLBook::insertContactMsg($_POST['contactName'], $_POST['contactEmail'], $_POST['contactMotivo'], $contactWebSiteValue, $_POST['contactMessage']);
 
 		if ($retorno != 1) {
 			echo "N&atilde;o foi poss&iacute;vel registrar sua mensagem. Tente novamente mais tarde.<br>Clique 'Voltar' em seu navegador.";
@@ -115,7 +122,7 @@
 
 		$contactName = FkdMailer::text($_POST['contactName']);
 		$contactEmail = FkdMailer::text($_POST['contactEmail']);
-		$contactWebSite = FkdMailer::text($_POST['contactWebSite']);
+		$contactWebSite = FkdMailer::text($contactWebSiteValue);
 		$contactMessage = FkdMailer::text($_POST['contactMessage']);
 		$msg = "fernandod.com.br - Contato:\n\nMotivo: ".$motivoStr."\nDe: ".$contactName." - ".$contactEmail."\nWeb site: ".$contactWebSite."\n\nMensagem:\n".$contactMessage;
 		if (!FkdMailer::send(FkdMailer::adminRecipient(), 'fernandod.com.br: Contato ('.$motivoStr.')', $msg, array('Reply-To' => $_POST['contactEmail']))) {
