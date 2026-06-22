@@ -36,6 +36,7 @@ filter=(
   AGENTS.md
   .htaccess
   README.md
+  error_log
   php/inc/connector_data.example.php
   php/inc/connector_data.local.example.php
   php/inc/mail_config.mailpit.example.php

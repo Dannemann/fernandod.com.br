@@ -35,6 +35,7 @@
             <excludedPath local="true" path="$PROJECT_DIR$/modules/PHPMailer-master/src/POP3.php" />
             <excludedPath local="true" path="$PROJECT_DIR$/images" />
             <excludedPath local="true" path="$PROJECT_DIR$/modules" />
+            <excludedPath local="true" path="$PROJECT_DIR$/error_log" />
           </excludedPaths>
         </serverdata>
       </paths>
