@@ -434,21 +434,28 @@ function readTextFile($file) {
 }
 
 function getCategory($id, $treeItens) {
-	$str = explode("['".$id, $treeItens);
-	$str = explode("']", $str[1]);
-	$str = explode("', 0,", $str[0]);
+	$str = explode("['".$id, $treeItens, 2);
+	if (!isset($str[1])) {
+		return '';
+	}
+
+	$str = explode("']", $str[1], 2);
+	$str = explode("', 0,", $str[0], 2);
 	$str = $str[0];
 	return $str;
 }
 
 function getChildren($id, $treeItens) {
-	$str = explode("['".$id, $treeItens);
+	$str = explode("['".$id, $treeItens, 2);
+	if (!isset($str[1])) {
+		return '';
+	}
 
 	$str[1] = preg_replace("/\s/", "", $str[1]);
 	//$str[1] = str_replace(" ", "", $str[1]);
 
-	$str = explode("]],", $str[1]);
-	$str = explode(",0,", $str[0]);
+	$str = explode("]],", $str[1], 2);
+	$str = explode(",0,", $str[0], 2);
 
 	$str[1] = @$str[1]."]";
 
